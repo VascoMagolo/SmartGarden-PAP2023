@@ -14,10 +14,10 @@ app.get('/', function(req, res) {
 app.post('/tryLogin', function (req, res) {
     console.log(req.body)
     const dbAccess = mysql.createConnection({
-        host: "lhcp3331.webapps.net",
-        user: "j65crs1a",
-        password: "PAPFarm2023!",
-        database: "j65crs1a_smart"
+        host: 'lhcp3331.webapps.net',
+        user: 'j65crs1a_Roberto',
+        password: 'PAPFarm2023!',
+        database: 'j65crs1a_smart'
     });
     dbAccess.connect();
 
