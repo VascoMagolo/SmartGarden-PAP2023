@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express')
 const app = express();
 const mysql = require('mysql');
-const sqlconn = require('sqlconn.json');
+const sqlconn = require('./sqlconn.json');
 let iduser=0;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
