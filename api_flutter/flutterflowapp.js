@@ -6,10 +6,6 @@ let iduser=0;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', function(req, res) {
-    res.send("Testing")
-})
-
 app.post('/tryLogin', function (req, res) {
     console.log(req.body)
     const dbAccess = mysql.createConnection({
