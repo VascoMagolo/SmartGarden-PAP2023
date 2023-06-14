@@ -22,7 +22,7 @@ app.post('/tryLogin', function (req, res) {
     dbAccess.connect();
 
     dbAccess.query(`SELECT users.IDuser,users.login,users.password,users.nome FROM users WHERE users.login = '${req.body.username}' AND users.password = MD5('${req.body.password}')`, function (error, results, fields) {
-        if (error) throw error;
+        if (error) return console.log(error);
         if(results.length === 1) {
             dbAccess.end();
             iduser=results[0].IDuser;
