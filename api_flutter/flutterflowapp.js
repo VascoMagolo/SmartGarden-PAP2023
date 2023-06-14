@@ -47,8 +47,9 @@ app.post('/tryLogin', function (req, res) {
                 });
             }
         } else {
+            console.log("sad3333")
             dbAccess.end();
-            res.status(500);
+            res.status(500).send;
         }
     });
 });
