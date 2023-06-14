@@ -7,7 +7,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/tryLogin', function (req, res) {
-    console.log(req.body)
     const dbAccess = mysql.createConnection({
         host: 'lhcp3331.webapps.net',
         user: 'j65crs1a_Roberto',
@@ -15,19 +14,35 @@ app.post('/tryLogin', function (req, res) {
         database: 'j65crs1a_smart'
     });
     dbAccess.connect();
-    dbAccess.query(`SELECT users.IDuser,users.login,users.pass,users.nome FROM users WHERE users.login = '${req.body.username}' AND users.pass = MD5('${req.body.password}')`, function (error, results, fields) {
-        if (error) return console.log(error);
+    const query=`
+        SELECT 
+            users.IDuser,
+            users.login,
+            users.pass,
+            users.nome 
+        FROM 
+            users 
+        WHERE 
+            users.login = '${req.body.username}' AND users.pass = MD5('${req.body.password}')`
+    
+    const query2=`
+        SELECT 
+            dashboard 
+        FROM 
+            dashboard 
+        WHERE 
+            dashboard.iduser = '${iduser}'`
+
+        dbAccess.query(query, function (error, results, fields) {
         if(results.length === 1) {
             iduser=results[0].IDuser;
             if (iduser!==0){
-                dbAccess.query(`SELECT dashboard FROM dashboard WHERE dashboard.iduser = '${iduser}'`, function (error, results2, fields) {
-                    if (error) return console.log(error);
-                    console.log(results2);
+                dbAccess.query(query2, function (error, results2, fields) {
                     if(results2.length === 1) {
                         dbAccess.end();
                         res.status(200).send({
                             "DASHBOARD": results2[0].dashboard,
-                            "IDUSER": results[0].IDuser
+                            "User": results
                         });
                     } else {
                         dbAccess.end();
@@ -48,5 +63,4 @@ app.post('/tryLogin', function (req, res) {
         }
     });
 });
-
 app.listen(3000);
