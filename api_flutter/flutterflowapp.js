@@ -40,6 +40,8 @@ app.post('/tryLogin', function (req, res) {
                     }
                 });
             }else{
+                console.log("sad boy");
+                dbAccess.end();
                 res.status(200).send({
                     "IDUSER": results[0].IDuser
                 });
