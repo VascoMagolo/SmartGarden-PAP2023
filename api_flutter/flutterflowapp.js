@@ -23,7 +23,6 @@ app.post('/tryLogin', function (req, res) {
     dbAccess.query(`SELECT users.IDuser,users.login,users.pass,users.nome FROM users WHERE users.login = '${req.body.username}' AND users.pass = MD5('${req.body.password}')`, function (error, results, fields) {
         if (error) return console.log(error);
         if(results.length === 1) {
-            dbAccess.end();
             iduser=results[0].IDuser;
              if (iduser!==0){
                 dbAccess.query(`SELECT dashboard FROM dashboard WHERE dashboard.iduser = '${iduser}'`, function (error, results2, fields) {
