@@ -24,10 +24,11 @@ app.post('/tryLogin', function (req, res) {
         if (error) return console.log(error);
         if(results.length === 1) {
             iduser=results[0].IDuser;
-             if (iduser!==0){
+            if (iduser!==0){
                 dbAccess.query(`SELECT dashboard FROM dashboard WHERE dashboard.iduser = '${iduser}'`, function (error, results2, fields) {
                     if (error) return console.log(error);
                     if(results2.length === 1) {
+                        console.log("hehe boy");
                         dbAccess.end();
                         res.status(200).send({
                             "DASHBOARD": results2[0].dashboard,
@@ -38,11 +39,11 @@ app.post('/tryLogin', function (req, res) {
                         res.status(500);
                     }
                 });
-             }else{
-                 res.status(200).send({
-                     "IDUSER": results[0].IDuser
-                 });
-             }
+            }else{
+                res.status(200).send({
+                    "IDUSER": results[0].IDuser
+                });
+            }
         } else {
             dbAccess.end();
             res.status(500);
