@@ -27,6 +27,7 @@ app.post('/tryLogin', function (req, res) {
             if (iduser!==0){
                 dbAccess.query(`SELECT dashboard FROM dashboard WHERE dashboard.iduser = '${iduser}'`, function (error, results2, fields) {
                     if (error) return console.log(error);
+                    console.log("hehe wboy");
                     if(results2.length === 1) {
                         console.log("hehe boy");
                         dbAccess.end();
@@ -35,6 +36,7 @@ app.post('/tryLogin', function (req, res) {
                             "IDUSER": results[0].IDuser
                         });
                     } else {
+                        console.log("hehe boye");
                         dbAccess.end();
                         res.status(500);
                     }
