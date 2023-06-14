@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express')
 const app = express();
 const mysql = require('mysql');
+const sqlconn = require('sqlconn.json');
 let iduser=0;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -13,10 +14,10 @@ app.get('/', function(req, res) {
 app.post('/tryLogin', function (req, res) {
     console.log(req.body)
     const dbAccess = mysql.createConnection({
-        host: 'lhcp3331.webapps.net',
-        user: 'j65crs1a',
-        password: 'PAPFarm2023!',
-        database: 'j65crs1a_smart'
+        host: sqlconn.host,
+        user: sqlconn.user,
+        password: sqlconn.password,
+        database: sqlconn.database
     });
     dbAccess.connect();
 

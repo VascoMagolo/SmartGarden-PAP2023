@@ -2,13 +2,13 @@ function hexToDec(hexString) {
     return parseInt(hexString, 16);
 }
 function Decoder(bytes, port) {
-    // Obtenha os dois valores hexadecimais a partir dos bytes recebidos
+    //to string 
     var hex1 = bytes[0].toString(16);
     var hex2 = bytes[1].toString(16);
     var hex3 = bytes[2].toString(16);
     var hex4 = bytes[3].toString(16);
     var hex5 = bytes[4].toString(16);
-    // Converta os valores hexadecimais em valores decimais
+    //from hex to dec
     var dec1 = hexToDec(hex1);
     var dec2 = hexToDec(hex2);
     var dec3 = hexToDec(hex3);  
