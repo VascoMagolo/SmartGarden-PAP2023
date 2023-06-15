@@ -1,0 +1,35 @@
+// Get the payload from the MQTT message
+var payload = msg.payload;
+
+// Parse the payload as a JSON object
+try {
+    var data = JSON.parse(payload);
+} catch (e) {
+    node.error("Error parsing JSON: " + e);
+    return null;
+}
+
+// Get the temperature and humidity values from the payload
+var temperature = data.uplink_message.decoded_payload.Temperature;
+var humidity = data.uplink_message.decoded_payload.Humidity;
+var humidadeSolo = data.uplink_message.decoded_payload.HumS;;
+var temperaturaSolo = data.uplink_message.decoded_payload.TempS;
+var relay = data.uplink_message.decoded_payload.Relay;
+var device_id = data.end_device_ids.device_id;
+var application_id = data.end_device_ids.application_ids.application_id;
+if (humidadeSolo===undefined) {
+humidadeSolo = 0;
+temperaturaSolo = 0;
+relay = "0";
+}
+// Create an SQL query to insert the data into the MySQL database
+var query = "INSERT INTO j65crs1a_datattn.data (Device_ID,App_ID,Temperature, Humidity,TemperaturaSolo,HumidadeSolo,Relay) VALUES ('" + device_id + "','" + application_id + "'," + temperature + "," + humidity + "," + temperaturaSolo + "," + humidadeSolo + ",'" + relay + "');";
+
+// Set the output message with the SQL query
+msg.topic = query;
+msg.payload = query;
+
+// Set the message properties
+
+// Return the message object
+return msg;
