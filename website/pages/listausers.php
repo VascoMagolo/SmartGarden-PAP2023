@@ -23,8 +23,8 @@ include ('../pages/nav.php');
           "lengthChange": true, 
           //"dom": '<"top"flp>rt<"bottom"ip>', 
           "language": {
-            "lengthMenu": "Mostrar _MENU_ entradas por página" ,
-            "search": "Pesquisar:",
+            "lengthMenu": "Showing _MENU_ entrys per page" ,
+            "search": "Search:",
             "decimal":        "",
             "emptyTable":     "No data available in table",
             "info":           "Showing _START_ to _END_ of _TOTAL_ entries",
@@ -80,8 +80,8 @@ include ('../pages/nav.php');
 <!--style="background-image: url('backgroundimage.jpg');"-->
   <body>
       <style>#UM{color: #0cd268;}</style>
-<div style='overflow-x:auto;'>
-  <table align="center" id="example" class="order-column" style="width:100%;background-color:white;">
+<div style='overflow-x:auto;padding:15px;'>
+  <table align="center" id="example" class="order-column" style="width:90%;background-color:white;">
   <caption> List of Users </caption>
   <style>
     button{
