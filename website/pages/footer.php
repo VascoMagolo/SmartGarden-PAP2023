@@ -74,7 +74,7 @@
                 placeholder="Enter Your email"
                 id="subscribeMail"
               />
-              <button type="submit">
+              <button style='font-weight:400;background-color:#0cd268;color:#fff;'type="submit">
                 Subscribe
               </button>
             </form>
