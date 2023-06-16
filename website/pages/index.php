@@ -13,11 +13,12 @@ include("../pages/nav.php");
 <style>#Home{color: #0cd268;}
         .content-index{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:50px;}
         .about_section{padding-bottom:0px;}
+        .col-md-5{display: flex;align-items: flex-start;}
 </style>
     <div class="banner_section">
             <div class="container-fluid">
             <div class="row">
-                <div class="col-md-7 padding_0" style='padding-left:0;'>
+                <div class="col-md-6 padding_0" style='padding-left:0;'>
                 <div id="main_slider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -75,8 +76,8 @@ include("../pages/nav.php");
         <div class="about_section layout_padding">
         <div class="container-fluid">
           <div class="row">
-            
-            <div class="col-md-6">
+           <div class="col-md-1"></div> 
+            <div class="col-md-5">
               <div class="about_taital">
                 <h4 class="about_text" id="about" style='margin-top:30px;'>About</h4>
                 <h1 class="highest_text">The Project</h1>
@@ -88,15 +89,19 @@ include("../pages/nav.php");
               </div>
             </div>
             <div class="col-md-1"></div>
-            <div class="col-md-4" style='padding-left:10px;padding-top:25px;'>
-              <iframe class='image_2' src="https://docs.google.com/presentation/d/e/2PACX-1vQ5Jkg9pCSx69zK1jaMEau6ZlIyrtZpoEDOStozQdydevSUA2BylquAk6XhX0r6EwTjfeeSUwkYQ49r/embed?start=true&loop=true&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            <div class="col-md-4" style='padding-left:20px;margin-top:100px;padding-right:0px;'>
+              <iframe class='image_2' src="https://docs.google.com/presentation/d/e/2PACX-1vQ5Jkg9pCSx69zK1jaMEau6ZlIyrtZpoEDOStozQdydevSUA2BylquAk6XhX0r6EwTjfeeSUwkYQ49r/embed?start=true&loop=true&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" autofocus="false"></iframe>
             </div>
             <div class="col-md-1"></div>
           </div>
-            <div>
+          <div class='row'>
+              <div class='col-md-1'></div>
+            <div class='col-md-10' style=overflow:hidden;;>
                 <h1 class="highest_text" style='padding-top:55px;'>Where are we</h1>
-                <iframe id='maps' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5558.669072721147!2d-8.561084632625645!3d40.923224704163886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2380e18e9e8de7%3A0xa24ca1f0475f99be!2sEscola%20Secund%C3%A1ria%20de%20Santa%20Maria%20da%20Feira!5e0!3m2!1spt-PT!2spt!4v1684402706574!5m2!1spt-PT!2spt" width="100" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            
+                <iframe id='maps' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5558.669072721147!2d-8.561084632625645!3d40.923224704163886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2380e18e9e8de7%3A0xa24ca1f0475f99be!2sEscola%20Secund%C3%A1ria%20de%20Santa%20Maria%20da%20Feira!5e0!3m2!1spt-PT!2spt!4v1684402706574!5m2!1spt-PT!2spt" width="100" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" scrolling="no"></iframe>            
             </div>
+            <div class='col-md-1'></div>
+        </div>
             <script>
             document.getElementById("maps").width = window.innerWidth-35;
                 function foo() {
