@@ -10,7 +10,7 @@
     background-color:#303136 !important;
 }
 .logo_main{
-    width:6rem !important;
+    width:4rem !important;
 }
 @media (max-width:575.98px){
     .logo_main{
@@ -20,6 +20,7 @@
 </style>
 <nav class="navbar navbar-expand-sm navbar-light bg-dark" id='navbartoggle'style='min-height:5rem;height:auto;'>
     <div class="container-fluid">
+
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-list" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
@@ -28,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ">
                 <li class='nav-item'>
-                    <a href='index.php'><img class="logo_main" src="../images/logo.png" style='pointer-events: none;margin-top:-35px;'></a>
+                    <a href='index.php'><img class="logo_main" src="../images/newlogo.png" style='pointer-events: none;margin-top:-30px;margin-left:5px;'></a>
                 </li>
                 <li class="nav-item"  >
                     <a class="nav-link" id='Home' href="../pages/index.php">Home</a>

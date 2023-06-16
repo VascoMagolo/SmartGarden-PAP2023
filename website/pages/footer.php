@@ -1,7 +1,8 @@
 <body>
     <style>
         .info_section{padding-bottom:15px;background-color:#303136 !important;}
-        .layout_padding{padding-top:15px;}
+        .layout_padding{padding-top:40px;}
+
     </style>
 <!-- footer section start -->
       <!-- info section -->
@@ -85,9 +86,9 @@
     <!-- end info section -->
     <!-- footer section end -->
     <!-- copyright section start -->
-    <div class="copyright_section" style='padding-top:10px;'>
+    <div class="copyright_section" style='padding-top:10px;background-color:#0cd268;'>
       <div class="container">
-        <p class="copyright">2023 All Rights Reserved. Design by Vasco Magolo</p>
+        <p class="copyright" style='color:#ffffff;font-weight:400;'>2023 All Rights Reserved. Design by Vasco Magolo</p>
       </div>
     </div>
     <!-- copyright section end -->
