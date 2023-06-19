@@ -10,10 +10,27 @@ include("../pages/nav.php");
 
 
 <link rel="stylesheet" href="../css/styleImportant.css">
-<style>#Home{color: #0cd268;}
+<style>
+        #Home{color: #0cd268;}
         .content-index{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:50px;}
         .about_section{padding-bottom:0px;}
         .col-md-5{display: flex;align-items: flex-start;}
+      
+        .typewriter {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 0;
+        animation: typing;
+        animation-duration: 3.5s;
+        animation-timing-function: steps(30, end);
+        animation-fill-mode: forwards;
+        }
+
+        @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+        }
+
 </style>
     <div class="banner_section">
             <div class="container-fluid">
