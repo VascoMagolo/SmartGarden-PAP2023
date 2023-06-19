@@ -4,7 +4,6 @@ include ('../scripts/ligaBD.php');
 include ('../scripts/verifica_SAdmin.php');
 include ('../pages/head.php');
 include ('../pages/nav.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -48,28 +47,24 @@ include ('../pages/nav.php');
           }
         });
       });
-      function openForm(id) {
-        var IDu=id;
-            window.location.href = `../pages/updateU.php?id=${IDu}`;
-      }
+    function openForm(id) {
+      window.location.href = `../pages/updateU.php?id=${id}`;
+    }
     function showAlertResetPW(id) {
-      var IDu=id;
       var choice = confirm("Are you sure you want to reset the password of this user?");
       if (choice == true) {
         alert("Submitting...");
-
-        window.location.href = `../scripts/resetPWBA.php?id=${IDu}`;
+        window.location.href = `../scripts/resetPWBA.php?id=${id}`;
       } else {
         alert("Cancelling...");
         window.location.href = "../pages/listausers.php";
       }
     }
     function showAlertBanir(id) {
-      var IDu=id;
       var choice = confirm("Are you sure that you wanna ban this user?");
       if (choice == true) {
         alert("Submitting...")
-        window.location.href = `../scripts/banirU.php?id=${IDu}`;
+        window.location.href = `../scripts/banirU.php?id=${id}`;
       } else {
         alert("Cancelling...");
         window.location.href = "../pages/listausers.php";

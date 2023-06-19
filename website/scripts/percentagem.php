@@ -21,37 +21,34 @@ $rowUN = mysqli_fetch_row($resultUN);
 $NumUserN = $rowUN[0];
 
 //contar quantos logs e logouts existem durante o ano de 2021,2022,2023
-//logins
+//logins //2023
 $qlogsL23="SELECT count(IDuser) from logs where tipo='login' AND Datalog like '2023%'";
 $resultUL23 = mysqli_query($ligaBD,$qlogsL23);
 $rowL23 = mysqli_fetch_row($resultUL23);
 $NumL23 = $rowL23[0];
-
+//2022
 $qlogsL22="SELECT count(IDuser) from logs where tipo='login' AND Datalog like '2022%'";
 $resultUL22 = mysqli_query($ligaBD,$qlogsL22);
 $rowL22 = mysqli_fetch_row($resultUL22);
 $NumL22= $rowL22[0];
-
+//2021
 $qlogsL21="SELECT count(IDuser) from logs where tipo='login' AND Datalog like '2021%'";
 $resultUL21 = mysqli_query($ligaBD,$qlogsL21);
 $rowL21 = mysqli_fetch_row($resultUL21);
 $NumL21 = $rowL21[0];
-//logouts
+//logouts //2023
 $qlogsLO23="SELECT count(IDuser) from logs where tipo='logout'AND Datalog like '2023%'";
 $resultLO23 = mysqli_query($ligaBD,$qlogsLO23);
 $rowLO23 = mysqli_fetch_row($resultLO23);
 $NumLO23 = $rowLO23[0];
-
+//2022
 $qlogsLO22="SELECT count(IDuser) from logs where tipo='logout'AND Datalog like '2022%'";
 $resultLO22 = mysqli_query($ligaBD,$qlogsLO22);
 $rowLO22 = mysqli_fetch_row($resultLO22);
 $NumLO22 = $rowLO22[0];
-
+//2021
 $qlogsLO21="SELECT count(IDuser) from logs where tipo='logout'AND Datalog like '2021%'";
 $resultLO21 = mysqli_query($ligaBD,$qlogsLO21);
 $rowLO21 = mysqli_fetch_row($resultLO21);
 $NumLO21 = $rowLO21[0];
-
-/*usado para saber a percentagem de admins no sistema em relacao a todos
-$PAdmin=$NumAdmin*100/$NumUser;*/
 ?>

@@ -30,40 +30,40 @@ include("../pages/nav.php");
         .buttonPDF {visibility: hidden;}}
     </style>
       <!-- services section start -->
-      <div class="services_section layout_padding padding_bottom_0">
-        <div class="container" id='containerblog'>
-          <h1 class="blog_text">Tutorial</h1>
-    <?php
-    $result = mysqli_query($ligaBD, "SELECT * FROM projeto");
-	while($row = mysqli_fetch_assoc($result)) {
-    $titulo=explode("%",$row["Titulo"]);
-    ?>
-            <div class="row">
-                <div class="col-lg-3 paddingTop greenbox">
-                <div class="call_box active">
-                    <h2 class="emergency_text"><?php echo $titulo[0]?></h2>
-                    <h1 class="call_text"><?php echo $titulo[1]?></h1>
-                    <p class="dolor_text"><?php echo $row["Descricao"]; ?></p>
-                    <a href='<?php echo $row["linkPdf"]; ?>' id='pdfB'class='buttonPDF' download>Download PDF</a>
+        <div class="services_section layout_padding padding_bottom_0">
+            <div class="container" id='containerblog'>
+                <h1 class="blog_text">Tutorial</h1>
+                <?php
+                $result = mysqli_query($ligaBD, "SELECT * FROM projeto");
+                while($row = mysqli_fetch_assoc($result)) {
+                    $titulo=explode("%",$row["Titulo"]);
+                ?>
+                <div class="row">
+                    <div class="col-lg-3 paddingTop greenbox">
+                        <div class="call_box active">
+                            <h2 class="emergency_text"><?php echo $titulo[0]?></h2>
+                            <h1 class="call_text"><?php echo $titulo[1]?></h1>
+                            <p class="dolor_text"><?php echo $row["Descricao"]; ?></p>
+                            <a href='<?php echo $row["linkPdf"]; ?>' id='pdfB'class='buttonPDF' download>Download PDF</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 paddingTop">
+                        <embed id="pdf"src=<?php echo $row["linkPdf"]; ?> type="application/pdf" height="100%" width="200%" style='min-height:300px;'/>
+                    </div>
                 </div>
-                </div>
-            <div class="col-lg-4 paddingTop">
-                <embed id="pdf"src=<?php echo $row["linkPdf"]; ?> type="application/pdf" height="100%" width="200%" style='min-height:300px;'/>
+                <script>
+                    let link = '<?php echo $row["linkPdf"];?>';
+                    b=document.getElementById("pdfB");
+                    if(link.includes("#")){
+                        b.setAttribute("onclick","return false");
+                        b.classList.add("no-cursor");
+                    }
+                </script>
+                <?php}?>
             </div>
-            </div>
-                    <script>
-                        let link = '<?php echo $row["linkPdf"];?>';
-                        b=document.getElementById("pdfB");
-                        if(link.includes("#")){
-                            b.setAttribute("onclick","return false");
-                            b.classList.add("no-cursor");
-                        }
-                    </script>
-            <?php}?>
         </div>
-    </div>
-</body>
+    </body>
 </html>
 <?php
-include("../pages/footer.php");
+    include("../pages/footer.php");
 ?>

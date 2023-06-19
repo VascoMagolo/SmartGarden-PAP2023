@@ -4,27 +4,21 @@ include ('../scripts/ligaBD.php');
 include ('../scripts/verifica_SAdmin.php');
 include ('../pages/head.php');
 include ('../pages/nav.php');
-
 $idToEdit = $_GET['id'];
 $query = "SELECT IDuser, login, nome, IDtipo, IDestado from users where IDuser = ". $idToEdit;
 $result = mysqli_query($ligaBD, $query);
 $row = mysqli_fetch_array($result);
- 
 ?>
 
 <html>
-  <head>
-     
+<head>   
     <meta charset="utf-8">
-
-
-  </head>
-  <style>
-  
-  body{
-      background-color:white !important;
-  }
-  .bodyEditUser {
+</head>
+<style>
+body{
+    background-color:white !important;
+}
+.bodyEditUser {
     text-align: center;
     vertical-align: middle;
     margin: auto;
@@ -35,7 +29,6 @@ $row = mysqli_fetch_array($result);
     width:25%;
     top: 0; left: 0; bottom: 0; right: 0;
 }
-
 .pageTitleEditUser {
     color: #0cd268;
     margin-left: 8%;
@@ -43,7 +36,6 @@ $row = mysqli_fetch_array($result);
     text-align: center;
     font-weight: bold;
 }
-
 .containerEditUser {
     padding: 10px 10px 10px 10px;
     margin-bottom: 10px;
@@ -54,12 +46,10 @@ $row = mysqli_fetch_array($result);
     text-align: center;
     color: black;
 }
-
 .lblEditUser{
     font-weight: bold;
     color: black;
 }
-
 .inputEditUser {
     border: 1px solid green;
     background-color: white;
@@ -68,13 +58,11 @@ $row = mysqli_fetch_array($result);
     padding: 5px;
     margin-bottom: 6px;
 }
-
 .inputEditUser:read-only {
     filter: blur(0.8px);
     opacity: 60%;
     color: white;
 }
-
 .selectEditUser {
     border: 1px solid green;
     background-color: white;
@@ -83,14 +71,11 @@ $row = mysqli_fetch_array($result);
     padding: 5px;
     margin-bottom: 6px;
 }
-
 .selectEditUser:disabled {
-
     filter: blur(0.8px);
     opacity: 60%;
     color: black;
 }
-
 .btnEditUser {
     border: 1px solid white;
     background-color: white;
@@ -101,7 +86,6 @@ $row = mysqli_fetch_array($result);
     padding-right: 14px;
     border-radius: 6px;
 }
-
 .btnEditUser:hover {
     transition-duration: 0.3s;
     opacity: 0.8;
@@ -118,30 +102,28 @@ $row = mysqli_fetch_array($result);
         padding-right: 15px;
         width:100%;
     }
-
     .containerEditUser {
         padding: 10px 5px 10px 5px;
     }
 }
-  </style>
-  
-  <script>      
+</style>
+<script>      
     function showAlertEdit() {
         var choice = confirm("Are you sure you want to update the information about this user?");
         if (choice == true) {
             alert("Submitting...");
-            window.location.href = `../pages/updateU.php?id=`<?php $idToEdit ?>;
+            document.getElementById("theForm").action = "../scripts/updateUser.php";
+            document.getElementById("theForm").submit();
         } 
         else {
             alert("Cancelling...");
-            window.location.href = "../pages/listausers.php";
         }
     }
-    </script>
+</script>
 <body >
     <div class="bodyEditUser" >
         <div class="containerEditUser" style='overflow-x:0;'>
-            <form action="../scripts/updateUser.php" method='Post'>
+            <form action="" id="theForm" method='Post'>
                 <label class="lblEditUser" for="id" style='margin-left:1.7rem;'>ID:</label>
                 <input class="inputEditUser" type="text" id="id" name="id" value="<?php echo $idToEdit; ?>" readOnly = "true"style='color:black;'> <br>
                 <label class="lblEditUser" for="login"style='margin-left:0.2rem;'>Email:</label>
@@ -161,7 +143,7 @@ $row = mysqli_fetch_array($result);
                     <option <?php if($row[4] == 3) echo "selected = 'selected'" ?> value="3">Registed</option>
                 </select>
                 <br> <br>
-                <button class="btnEditUser" type="submit" onclick=showAlertEdit()>Update Information</button><p></p>
+                <button class="btnEditUser" onclick=showAlertEdit()>Update Information</button><p></p>
             </form>
             <button class="btnEditUser" onclick="location.href='../pages/listausers.php'">Cancel</button>
         </div>
