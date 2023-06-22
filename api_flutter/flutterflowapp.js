@@ -19,7 +19,7 @@ app.post('/tryLogin', function (req, res) {
             users.IDuser,
             users.login,
             users.pass,
-            users.nome 
+            users.nome
         FROM 
             users 
         WHERE 
@@ -47,7 +47,7 @@ app.post('/tryLogin', function (req, res) {
                     } else {
                         dbAccess.end();
                         res.status(200).send({
-                            "IDUSER": results[0].IDuser
+                            "Use": results
                         });
                     }
                 });
