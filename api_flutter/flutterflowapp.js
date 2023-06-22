@@ -59,7 +59,7 @@ app.post('/tryLogin', function (req, res) {
             }
         } else {
             dbAccess.end();
-            res.status(200).send({"IDUSER": 0});
+            res.status(500).send;
         }
     });
 });
