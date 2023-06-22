@@ -1,0 +1,224 @@
+[
+    {
+        "id": "be01526ea11c9c62",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ec243a10afe865da",
+        "type": "mqtt in",
+        "z": "be01526ea11c9c62",
+        "name": "",
+        "topic": "v3/+/devices/+/up",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fd56ec1e68f039a5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 220,
+        "y": 360,
+        "wires": [
+            [
+                "1416d2e0a37dd686",
+                "9213d492be92c21b"
+            ]
+        ]
+    },
+    {
+        "id": "fc862e6d0f48c833",
+        "type": "mysql",
+        "z": "be01526ea11c9c62",
+        "mydb": "cabbd46abae857de",
+        "name": "smart_sql",
+        "x": 860,
+        "y": 280,
+        "wires": [
+            [
+                "b70b9b0d1808de00"
+            ]
+        ]
+    },
+    {
+        "id": "e337114f89972149",
+        "type": "function",
+        "z": "be01526ea11c9c62",
+        "name": "function 3",
+        "func": "// Get the payload from the MQTT message\nvar payload = msg.payload;\n\n// Parse the payload as a JSON object\ntry {\n    var data = JSON.parse(payload);\n} catch (e) {\n    node.error(\"Error parsing JSON: \" + e);\n    return null;\n}\n\n// Get the temperature and humidity values from the payload\nvar temperature = data.uplink_message.decoded_payload.Temperature;\nvar humidity = data.uplink_message.decoded_payload.Humidity;\nvar humidadeSolo = data.uplink_message.decoded_payload.HumS;;\nvar temperaturaSolo = data.uplink_message.decoded_payload.TempS;\nvar relay = data.uplink_message.decoded_payload.Relay;\nvar device_id = data.end_device_ids.device_id;\nvar application_id = data.end_device_ids.application_ids.application_id;\nif (humidadeSolo===undefined) {\nhumidadeSolo = 0;\ntemperaturaSolo = 0;\nrelay = \"0\";\n}\n// Create an SQL query to insert the data into the MySQL database\nvar query = \"INSERT INTO j65crs1a_datattn.data (Device_ID,App_ID,Temperature, Humidity,TemperaturaSolo,HumidadeSolo,Relay) VALUES ('\" + device_id + \"','\" + application_id + \"',\" + temperature + \",\" + humidity + \",\" + temperaturaSolo + \",\" + humidadeSolo + \",'\" + relay + \"');\";\n\n// Set the output message with the SQL query\nmsg.topic = query;\nmsg.payload = query;\n\n// Set the message properties\n\n// Return the message object\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 340,
+        "wires": [
+            [
+                "fc862e6d0f48c833",
+                "2bb87d1cb5bef1a6"
+            ]
+        ]
+    },
+    {
+        "id": "1416d2e0a37dd686",
+        "type": "debug",
+        "z": "be01526ea11c9c62",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "2bb87d1cb5bef1a6",
+        "type": "debug",
+        "z": "be01526ea11c9c62",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "9213d492be92c21b",
+        "type": "json",
+        "z": "be01526ea11c9c62",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "d467a76df0305d2e",
+                "e337114f89972149",
+                "fd4401c740587d92"
+            ]
+        ]
+    },
+    {
+        "id": "d467a76df0305d2e",
+        "type": "debug",
+        "z": "be01526ea11c9c62",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b70b9b0d1808de00",
+        "type": "debug",
+        "z": "be01526ea11c9c62",
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fd4401c740587d92",
+        "type": "function",
+        "z": "be01526ea11c9c62",
+        "name": "send back",
+        "func": "// Get the payload from the MQTT message\nvar payload = msg.payload;\n\n// Parse the payload as a JSON object\ntry {\n    var data = JSON.parse(payload);\n} catch (e) {\n    node.error(\"Error parsing JSON: \" + e);\n    return null;\n}\n\n// Get the temperature and humidity values from the payload\nvar temperature = data.uplink_message.decoded_payload.Temperature;\nvar humidity = data.uplink_message.decoded_payload.Humidity;\nif ( temperature>25 || humidity<40){\n    msg.topic=\"relay\";\n    msg.payload=1;\n    return msg;\n}\nmsg.topic = \"relay\";\nmsg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 200,
+        "wires": [
+            [
+                "efbe80950851cbdd"
+            ]
+        ]
+    },
+    {
+        "id": "efbe80950851cbdd",
+        "type": "debug",
+        "z": "be01526ea11c9c62",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "fd56ec1e68f039a5",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "eu1.cloud.thethings.network",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "cabbd46abae857de",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "lhcp3331.webapps.net",
+        "port": "3306",
+        "db": "j65crs1a_datattn",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
