@@ -47,7 +47,7 @@ app.post('/tryLogin', function (req, res) {
                     } else {
                         dbAccess.end();
                         res.status(200).send({
-                            "Use": results
+                            "User": results
                         });
                     }
                 });
