@@ -61,6 +61,7 @@ app.post('/tryLogin', function (req, res) {
                         dbAccess.query(query2, function (error, results3, fields) {
                             dbAccess.end();
                             res.status(200).send({
+                                "Device_ID":results3[0].Device_ID,
                                 "DASHBOARD": results2[0].dashboard,
                                 "User": results
                             });
