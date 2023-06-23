@@ -23,7 +23,7 @@ temperaturaSolo = 0;
 relay = "0";
 }
 // Create an SQL query to insert the data into the MySQL database
-var query = "INSERT INTO j65crs1a_datattn.data (Device_ID,App_ID,Temperature, Humidity,TemperaturaSolo,HumidadeSolo,Relay) VALUES ('" + device_id + "','" + application_id + "'," + temperature + "," + humidity + "," + temperaturaSolo + "," + humidadeSolo + ",'" + relay + "');";
+var query = "INSERT INTO j65crs1a_smart.data (Device_ID,App_ID,Temperature, Humidity,TemperaturaSolo,HumidadeSolo,Relay) VALUES ('" + device_id + "','" + application_id + "'," + temperature + "," + humidity + "," + temperaturaSolo + "," + humidadeSolo + ",'" + relay + "'," + 1 + ");";
 
 // Set the output message with the SQL query
 msg.topic = query;
