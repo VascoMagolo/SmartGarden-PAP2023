@@ -58,7 +58,7 @@ app.post('/tryLogin', function (req, res) {
                 dbAccess.query(query2, function (error, results2, fields) {
                     if(results2.length === 1) {
                         IDdash=results2[0].IDdash;
-                        dbAccess.query(query2, function (error, results3, fields) {
+                        dbAccess.query(query3, function (error, results3, fields) {
                             dbAccess.end();
                             res.status(200).send({
                                 "Data":results3,
