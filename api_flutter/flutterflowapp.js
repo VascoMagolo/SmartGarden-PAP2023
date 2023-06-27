@@ -85,4 +85,43 @@ app.post('/tryLogin', function (req, res) {
         }
     });
 });
+
+app.post('/GetValues', function (req, res) {
+    const dbAccess = mysql.createConnection({
+        host: 'lhcp3331.webapps.net',
+        user: 'j65crs1a_Roberto',
+        password: 'PAPFarm2023!',
+        database: 'j65crs1a_smart'
+    });
+    dbAccess.connect();
+    const date =new Date().toJSON().slice(0,7);
+    const query=`
+        SELECT
+            data.ID,
+            data.Device_ID,
+            data.App_ID,
+            data.Date,
+            data.Temperature,
+            data.Humidity,
+            data.TemperaturaSolo,
+            data.HumidadeSolo,
+            data.Relay,
+            data.IDdash 
+        FROM
+            data
+        WHERE
+            (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%${date}%") AND (data.IDdash='${req.body.IDdash}');`
+        dbAccess.query(query, function (error, results, fields) {
+            if(results.length === 1) {
+                dbAccess.end();
+                res.status(200).send({
+                    "Values":results
+                });
+            }
+            else{
+                dbAccess.end();
+                res.status(500).send;
+            }
+        });
+});
 app.listen(3000);
