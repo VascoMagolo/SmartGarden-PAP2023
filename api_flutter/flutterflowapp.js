@@ -61,8 +61,9 @@ app.post('/tryLogin', function (req, res) {
                         dbAccess.query(query3, function (error, results3, fields) {
                             dbAccess.end();
                             res.status(200).send({
-                                "Data":results3,
+                               // "Data":results3,
                                 "DASHBOARD": results2[0].dashboard,
+                                "IDdash":IDdash,
                                 "User": results
                             });
                         });
