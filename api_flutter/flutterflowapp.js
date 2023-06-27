@@ -50,7 +50,7 @@ app.post('/tryLogin', function (req, res) {
         FROM
             data
         WHERE
-            (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%'${date}'%") AND (data.IDdash='${IDdash}');`
+            (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%${date}%") AND (data.IDdash='${IDdash}');`
         dbAccess.query(query, function (error, results, fields) {
         if(results.length === 1) {
             iduser=results[0].IDuser;
