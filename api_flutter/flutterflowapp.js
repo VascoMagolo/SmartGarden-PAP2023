@@ -87,7 +87,7 @@ app.post('/tryLogin', function (req, res) {
     });
 });
 
-app.post('/GetValues', function (req, res) {
+app.post('/GetValues', function (req2, res2) {
     const dbAccess = mysql.createConnection({
         host: 'lhcp3331.webapps.net',
         user: 'j65crs1a_Roberto',
@@ -111,17 +111,17 @@ app.post('/GetValues', function (req, res) {
         FROM
             data
         WHERE
-            (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%${date}%") AND (data.IDdash='${req.body.IDdash}');`
+            (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%${date}%") AND (data.IDdash='${req2.body.IDdash}');`
         dbAccess.query(query, function (error, results, fields) {
             if(results.length === 1) {
                 dbAccess.end();
-                res.status(200).send({
+                res2.status(200).send({
                     "Values":results
                 });
             }
             else{
                 dbAccess.end();
-                res.status(500).send;
+                res2.status(500).send;
             }
         });
 });
