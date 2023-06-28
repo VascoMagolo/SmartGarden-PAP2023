@@ -15,7 +15,6 @@ app.post('/tryLogin', function (req, res) {
         database: 'j65crs1a_smart'
     });
     dbAccess.connect();
-    const date =new Date().toJSON().slice(0,7);
     const query=`
         SELECT 
             users.IDuser,
@@ -26,7 +25,6 @@ app.post('/tryLogin', function (req, res) {
             users 
         WHERE 
             users.login = '${req.body.username}' AND users.pass = MD5('${req.body.password}')`
-    
     const query2=`
         SELECT 
             IDdash,
@@ -35,22 +33,6 @@ app.post('/tryLogin', function (req, res) {
             dashboard 
         WHERE 
             dashboard.iduser = '${iduser}'`
-    const query3=`
-        SELECT
-            data.ID,
-            data.Device_ID,
-            data.App_ID,
-            data.Date,
-            data.Temperature,
-            data.Humidity,
-            data.TemperaturaSolo,
-            data.HumidadeSolo,
-            data.Relay,
-            data.IDdash 
-        FROM
-            data
-        WHERE
-            (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%${date}%") AND (data.IDdash='${IDdash}');`
         dbAccess.query(query, function (error, results, fields) {
         if(results.length === 1) {
             iduser=results[0].IDuser;
@@ -58,14 +40,12 @@ app.post('/tryLogin', function (req, res) {
                 dbAccess.query(query2, function (error, results2, fields) {
                     if(results2.length === 1) {
                         IDdash=results2[0].IDdash;
-                        dbAccess.query(query3, function (error, results3, fields) {
-                            dbAccess.end();
-                            res.status(200).send({
-                               // "Data":results3,
-                                "DASHBOARD": results2[0].dashboard,
-                                "IDdash":IDdash,
-                                "User": results
-                            });
+                        dbAccess.end();
+                        res.status(200).send({
+                            // "Data":results3,
+                            "DASHBOARD": results2[0].dashboard,
+                            "IDdash":IDdash,
+                            "User": results
                         });
                     } else {
                         dbAccess.end();
@@ -73,11 +53,6 @@ app.post('/tryLogin', function (req, res) {
                             "User": results
                         });
                     }
-                });
-            }else{
-                dbAccess.end();
-                res.status(200).send({
-                    "IDUSER": results[0].IDuser
                 });
             }
         } else {
@@ -113,7 +88,6 @@ app.post('/GetValues', function (req2, res2) {
         WHERE
             (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%${date}%") AND (data.IDdash='${req2.body.IDdash}');`
         dbAccess.query(query, function (error, results, fields) {
-
             if(results.length >= 1) {
                 dbAccess.end();
                 res2.status(200).send({
