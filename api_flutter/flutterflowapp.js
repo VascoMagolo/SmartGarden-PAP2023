@@ -113,6 +113,9 @@ app.post('/GetValues', function (req2, res2) {
         WHERE
             (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%${date}%") AND (data.IDdash='${req2.body.IDdash}');`
         dbAccess.query(query, function (error, results, fields) {
+            console.log(results)
+            console.log(results.length)
+
             if(results.length === 1) {
                 dbAccess.end();
                 res2.status(200).send({
