@@ -98,7 +98,7 @@ app.post('/GetValues', function (req2, res2) {
             }
             else{
                 dbAccess.end();
-                res2.status(500).send;
+                res2.status(500).send();
             }
         });
 });
