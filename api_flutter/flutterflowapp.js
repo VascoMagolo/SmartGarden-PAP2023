@@ -86,7 +86,7 @@ app.post('/GetValues', function (req2, res2) {
         FROM
             data
         WHERE
-            (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.Date LIKE "%${date}%") AND (data.IDdash='${req2.body.IDdash}')
+            (data.Device_ID LIKE "eui-ac1f09fffe08e925") AND (data.IDdash='${req2.body.IDdash}')
         ORDER BY
             data.ID Desc LIMIT 10;`
         dbAccess.query(query, function (error, results, fields) {
