@@ -57,7 +57,7 @@ app.post('/tryLogin', function (req, res) {
             }
         } else {
             dbAccess.end();
-            res.status(500).send;
+            res.status(500).send();
         }
     });
 });
