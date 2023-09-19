@@ -106,8 +106,8 @@ void sendCallback(int32_t status)
     }
 }
 void sht20_read_data(){
-  humS = sht20.readHumidity();         // Read Humidity
-  tempS = sht20.readTemperature();      // Read Temperature
+  humS = sht20.readHumidity();// Read Humidity
+  tempS = sht20.readTemperature(); // Read Temperature
   
 }
 void shtc3_read_data()
