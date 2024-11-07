@@ -13,6 +13,10 @@ The completion of this project includes a fully automated garden being it self s
 
 ## How to run it
 
-To run this project you will need both some software and some hardware.
+To run this project you will need both some software and hardware.
+
+### List of hardware used on this project:
+
+<li>Wisgate Edge Lite 2</li>
 
 
